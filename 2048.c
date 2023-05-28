@@ -70,7 +70,7 @@ int getY(const struct Pos *this);
 int getValue(const struct Pos *this);
 
 G2048 *init();
-void uninit(struct G2048 *G2048_ptr) { free(G2048_ptr); }
+void uninit(struct G2048 *G2048_ptr) { DeletePos(G2048_ptr->_NUMBER); free(G2048_ptr); }
 int getData(const struct G2048 *this, char *value);
 void setData(struct G2048 *this, int max, int boardsize);
 int getBoardData(const struct G2048 *this, int x, int y);
@@ -627,4 +627,5 @@ int main() {
   Game_main = init();
   Game_main->clearBoard(Game_main);
   inGame();
+  uninit(Game_main);
 }
